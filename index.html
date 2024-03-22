@@ -42,7 +42,7 @@
             width: 150px;
             display: block;
             margin: 10px auto;
-            font-size: 25px;
+            font-size: 20px;
             background-color: #08AEEA;
             background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);
             color: white;
@@ -51,19 +51,46 @@
             padding: 5px 10px;
             cursor: pointer;
         }
+        @media screen and (max-width: 768px) {
+            .container{
+                width: 90%;
+            }
+        }
     </style>
 </head>
 <body>
     <h1 class="app-title">Sum of 2 Numbers</h1>
     <div class="container">
-        <input type="text" placeholder="Enter 1st Number " class="number-input"/>
-        <input type="text" placeholder="Enter 2nd Number " class="number-input"/>
-        <p class="answer">
-            Answer :
-        </p>
-        <button type="button" class="btn-calculate">
+        <input type="text" placeholder="Enter 1st Number " class="number-input" id="num1"/>
+        <input type="text" placeholder="Enter 2nd Number " class="number-input" id="num2"/>
+        <p class="answer" id="ans"></p>
+        <button type="button" class="btn-calculate" onclick="calculate()">
             Calculate
         </button>
+        <button type="button" class="btn-calculate" onclick="reset()">
+            Reset
+        </button>
     </div>
+
+    <script>
+        function calculate(){
+            const input1 = document.getElementById("num1");
+            const input2 = document.getElementById("num2");
+
+            const sum = parseInt(input1.value) +parseInt(input2.value);
+
+            const ansElement = document.getElementById("ans");
+            ansElement.innerText = `Answer : ${sum}` 
+        }
+
+        function reset(){
+            const input1 = document.getElementById("num1");
+            const input2 = document.getElementById("num2");
+            const ansElement = document.getElementById("ans");
+            input1.value = "";
+            input2.value = "";
+            ansElement.innerText = "";
+        }
+    </script>
 </body>
 </html>
